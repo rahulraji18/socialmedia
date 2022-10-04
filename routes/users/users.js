@@ -1,7 +1,10 @@
 var router = require('express').Router();
 
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+// Update user
+router.put('/:id', )
+// Delete user
+// Get a user
+// Follow user
+// Unfollow user
 
 module.exports = router;

@@ -40,6 +40,22 @@ const userSchema = new mongoose.Schema({
     isAdmin: {
         type: Boolean,
         default: false,
+    },
+    desc: {
+        type: String,
+        maxLength: 50,
+    },
+    city: {
+        type: String,
+        maxLength: 50,
+    },
+    from: {
+        type: String,
+        maxLength: 50,
+    },
+    relationShip: {
+        type: Number,
+        enum: [1,2,3]
     }
 },{timestamps: true});
 
@@ -60,4 +76,8 @@ userSchema.methods.getJWTToken = function () {
     })
 }
 
+// COMPARE PASSWORD
+userSchema.methods.comparePassword = async function(password) {
+    return await bcrypt.compare(password,this.password)
+};
 module.exports = mongoose.model('users',userSchema);
